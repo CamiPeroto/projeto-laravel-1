@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cursos</title>
-</head>
-<body>
-    <h2>Editar o Curso</h2>
-    <a href="{{ route('courses.index') }}">Listar</a><br>
-</body>
-</html>
+@extends('layouts.admin')
+
+ @section('content')
+ <h2>Editar o Curso</h2>
+
+ <a href="{{ route('courses.index') }}">Listar</a><br>  
+@endsection
