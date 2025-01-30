@@ -2,9 +2,7 @@
 
  @section('content')
     <h2>Listar os cursos</h2>
-
-    <a href="{{ route('courses.show') }}">Visualizar</a><br>
-    <a href="{{ route('courses.create') }}">Cadastrar</a><br>   
+    <a href="{{ route('courses.create') }}">Cadastrar</a><br> <br>  
 
     {{-- imprimir os registros --}}
     @forelse ($courses as $course)
@@ -12,6 +10,8 @@
     {{$course->name}}<br>
     {{\Carbon\Carbon::parse($course->created_at)->format('d/m/Y H:i:s')}}<br>
     {{\Carbon\Carbon::parse($course->updated_at)->format('d/m/Y H:i:s')}}<br>
+
+    <a href="{{ route('courses.show', ['course'=> $course->id]) }}">Visualizar</a>
     <hr>
         
     @empty
