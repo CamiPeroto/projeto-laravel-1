@@ -40,27 +40,33 @@ class CourseController extends Controller
         
         // Cadastrar o novo curso no banco de dados // dd printa a linha na tela, tipo vardump
         // dd($request->name);
-        Course::create([
+        $course = Course::create([
             'name' => $request->name
         ]);
         //Redirecionar o usuário para página de cadastro, mensagem de sucesso
-        return redirect()->route('courses.create')->with('success', 'Curso cadastrado com sucesso!');
+        return redirect()->route('courses.show', ['course' =>$course->id])->with('success', 'Curso cadastrado com sucesso!');
     }
     
     // Listar o formulário editar curso
-    public function edit(){
+    public function edit(Course $course){
        
         //Carregar view 
-        return view('courses.edit');
+        return view('courses.edit', ['course' => $course]);
     }
     
     // Editar o registro no banco de dados
-    public function update (){
-        dd("Editar o curso no banco de dados");
+    public function update (Request $request, Course $course){
+        $course->update([
+            'name' =>$request->name
+        ]);
+       return redirect()->route('courses.show', ['course' =>$course->id])
+       ->with('success', 'Curso editado com sucesso!');
     }
     
     // Excluir o curso do banco de dados
-    public function destroy(){
-       dd('Excluir');
+    public function destroy(Course $course){
+        $course->delete();
+        return redirect()->route('courses.index')->with('success', 'Curso excluído com sucesso');
+      
     }
 }
