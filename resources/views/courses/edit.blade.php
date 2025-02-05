@@ -11,6 +11,14 @@
     <button type="submit">Visualizar</button>
 </a> <br><br>
 
+@if ($errors ->any())
+     <span style="color:#f00">
+        @foreach ($errors->all() as $error)
+           {{$error}}<br>   
+          @endforeach
+     </span>
+ @endif
+
  <form action="{{route('courses.update', ['course'=> $course->id]) }}" method="POST">
     @csrf
     @method('PUT')
