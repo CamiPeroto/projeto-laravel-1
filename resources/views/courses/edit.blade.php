@@ -3,8 +3,14 @@
  @section('content')
  <h2>Editar o Curso</h2>
 
- <a href="{{ route('courses.index') }}">Listar</a><br>  
- <a href="{{ route('courses.show', ['course' =>$course->id]) }}">Visualizar</a> <br><br>
+ <a href="{{ route('courses.index') }}">
+    <button type="submit">Listar</button>    
+</a><br><br> 
+
+ <a href="{{ route('courses.show', ['course' =>$course->id]) }}">
+    <button type="submit">Visualizar</button>
+</a> <br><br>
+
  <form action="{{route('courses.update', ['course'=> $course->id]) }}" method="POST">
     @csrf
     @method('PUT')

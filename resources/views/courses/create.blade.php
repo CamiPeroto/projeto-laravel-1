@@ -3,7 +3,9 @@
  @section('content')
  <h2>Cadastrar o Curso</h2>
 
- <a href="{{ route('courses.index') }} ">Listar</a><br> <br>
+ <a href="{{ route('courses.index') }}">
+   <button type="submit">Listar</button>   
+</a><br> <br>
  
  @if (session('success'))
      <p style ="color: #082" >
@@ -11,7 +13,7 @@
      </p>
  @endif
 
- <form action="{{route('courses.store') }} " method="POST">
+ <form action="{{route('courses.store') }}" method="POST">
     @csrf
     @method('POST')
     <label>Nome: </label>
