@@ -6,12 +6,8 @@
     <a href="{{ route('courses.create') }}">
         <button type="submit">Cadastrar</button>    
     </a><br> <br>  
-
-    @if (session('success'))
-    <p style ="color: #082" >
-       {{ session('success') }}
-    </p>
-@endif
+    
+    <x-alert />
 
     {{-- imprimir os registros --}}
     @forelse ($courses as $course)

@@ -17,11 +17,7 @@
         <button type="submit" onclick="return confirm('Tem certeza que deseja apagar o registro ?')">Apagar</button>
     </form><br>
 
-    @if (session('success'))
-    <p style ="color: #082" >
-       {{ session('success') }}
-    </p>
-@endif
+    <x-alert />
     
     ID: {{$course->id}} <br>
     Nome: {{$course->name}} <br>
