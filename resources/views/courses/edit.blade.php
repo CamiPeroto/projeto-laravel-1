@@ -14,9 +14,13 @@
  <form action="{{route('courses.update', ['course'=> $course->id]) }}" method="POST">
     @csrf
     @method('PUT')
+
     <label >Nome: </label>
     <input type="text" name="name" id="name" placeholder="Nome do Curso" value="{{old('name', $course->name)}}" required><br><br>
-
+    
+    <label >Preço: </label>
+    <input type="text" name="price" id="price" placeholder="Preço do Curso" value="{{old('price', $course->price)}}" required><br><br>
+    
     <button type="submit">Salvar</button>
 
  </form>

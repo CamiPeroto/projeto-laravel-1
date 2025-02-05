@@ -41,7 +41,8 @@ class CourseController extends Controller
         // Cadastrar o novo curso no banco de dados // dd printa a linha na tela, tipo vardump
         // dd($request->name);
         $course = Course::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'price' => $request->price,
         ]);
         //Redirecionar o usuário para página de cadastro, mensagem de sucesso
         return redirect()->route('courses.show', ['course' =>$course->id])->with('success', 'Curso cadastrado com sucesso!');
@@ -57,7 +58,8 @@ class CourseController extends Controller
     // Editar o registro no banco de dados
     public function update (Request $request, Course $course){
         $course->update([
-            'name' =>$request->name
+            'name' =>$request->name,
+            'price'=>$request->price,
         ]);
        return redirect()->route('courses.show', ['course' =>$course->id])
        ->with('success', 'Curso editado com sucesso!');

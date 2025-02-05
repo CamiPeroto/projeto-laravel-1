@@ -11,5 +11,6 @@ class Course extends Model
     protected $table = 'courses';
 
     //indicar quais colunas podem ser preenchidas
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'price'];
+    
 }
