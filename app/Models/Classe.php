@@ -10,7 +10,7 @@ class Classe extends Model
        protected $table = 'classes';
 
        //indicar quais colunas podem ser preenchidas
-       protected $fillable = ['name', 'description', 'course_id'];
+       protected $fillable = ['name', 'description', 'order_classe', 'course_id', ];
        
        //Criar relacionamento entre um e muitos 
        public function course()

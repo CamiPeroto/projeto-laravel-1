@@ -6,6 +6,10 @@
     <a href="{{ route('course.index') }}">
     <button type="submit">Listar</button>    
     </a><br><br>
+
+    <a href="{{ route('classe.index', ['course'=> $course->id]) }}">
+        <button type="submit">Listar Aulas</button>
+    </a><br><br>
    
     <a href="{{ route('course.edit', ['course'=> $course->id]) }}">
         <button type="submit">Editar</button>

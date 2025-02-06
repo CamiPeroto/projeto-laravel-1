@@ -5,7 +5,11 @@
     <h2>Listar as Aulas</h2>
     <a href="{{ route('course.index') }}">
         <button type="submit">Cursos</button>    
-    </a><br> <br>  
+    </a><br> <br> 
+
+    <a href="{{ route('classe.create', [ 'course' => $course->id ]) }}">
+        <button type="submit">Cadastrar</button>    
+    </a><br>  
  
     <x-alert />
     

@@ -16,6 +16,32 @@ class ClasseController extends Controller
         ->get();
 
         //carregar view
-        return view('classes.index',['classes'=>$classes]);
+        return view('classes.index',['course' => $course,'classes'=>$classes]);
+    }
+    public function create(Course $course)
+    {
+        //Carregar a view
+        return view ('classes.create', ['course' => $course]);
+    }
+
+    public function store (Request $request) //recebe os dados que vem do formulário e injeta em $request
+    {
+        //Recuperar a última ordem da aula no curso
+        $lastOrderClasse = Classe::where('course_id', $request->course_id )
+        ->orderBy('order_classe', 'DESC')
+        ->first();
+
+        //Cadastrar a nova aula no banco
+        Classe::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'order_classe' => $lastOrderClasse ? $lastOrderClasse ->order_classe + 1 : 1 ,
+            'course_id' => $request->course_id,
+
+        ]);
+
+        //Redirecionar o usuário e enviar mensagem de sucesso
+        return redirect()->route('classe.index', ['course' => $request->course_id])
+        ->with('success', 'Aula cadastrada com sucesso!');
     }
 }

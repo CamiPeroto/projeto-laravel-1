@@ -7,7 +7,7 @@
     <button type="submit">Listar</button>    
 </a><br><br> 
 
- <a href="{{ route('courses.show', ['course' =>$course->id]) }}">
+ <a href="{{ route('course.show', ['course' =>$course->id]) }}">
     <button type="submit">Visualizar</button>
 </a> <br><br>
 
