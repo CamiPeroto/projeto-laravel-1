@@ -3,13 +3,13 @@
  @section('content')
  <h2>Cadastrar o Curso</h2>
 
- <a href="{{ route('courses.index') }}">
+ <a href="{{ route('course.index') }}">
    <button type="submit">Listar</button>   
 </a><br> <br>
 
 <x-alert />
 
- <form action="{{route('courses.store') }}" method="POST">
+ <form action="{{route('course.store') }}" method="POST">
     @csrf
     @method('POST')
     <label>Nome: </label>
