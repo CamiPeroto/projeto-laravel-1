@@ -1,5 +1,8 @@
 <?php
+
+use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CourseController;
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,10 +10,14 @@ Route::get('/', function () {
 });
 
 //Cursos
-Route::get('/index-course', [CourseController::class, 'index'])->name('courses.index'); //listar os cursos
-Route::get('/show-course/{course}', [CourseController::class, 'show'])->name('courses.show'); //control + D para selecionar a mesma palavra e editar
-Route::get('/create-course', [CourseController::class, 'create'])->name('courses.create');
-Route::post('/store-course', [CourseController::class, 'store'])->name('courses.store');
-Route::get('/edit-course/{course}', [CourseController::class, 'edit'])->name('courses.edit');
-Route::put('/update-course/{course}', [CourseController::class, 'update'])->name('courses.update'); //put recomendado para editar
-Route::delete('/destroy-course/{course}', [CourseController::class, 'destroy'])->name('courses.destroy');
+Route::get('/index-course', [CourseController::class, 'index'])->name('course.index'); //listar os cursos
+Route::get('/show-course/{course}', [CourseController::class, 'show'])->name('course.show'); //control + D para selecionar a mesma palavra e editar
+Route::get('/create-course', [CourseController::class, 'create'])->name('course.create');
+Route::post('/store-course', [CourseController::class, 'store'])->name('course.store');
+Route::get('/edit-course/{course}', [CourseController::class, 'edit'])->name('course.edit');
+Route::put('/update-course/{course}', [CourseController::class, 'update'])->name('course.update'); //put recomendado para editar
+Route::delete('/destroy-course/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
+
+//Aulas
+Route::get('/index-classe/{course}', [ClasseController::class, 'index'])->name('classe.index');
+
