@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ClasseRequest;
 use App\Models\Classe;
 use App\Models\Course;
+use Exception;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
@@ -80,9 +81,20 @@ class ClasseController extends Controller
     }
     public function destroy(Classe $classe)
     {
-        $classe->delete();
+        try{
+            $classe->delete();
+        
+            //Redirecionar o usuário e enviar mensagem de sucesso
+            return redirect()->route('classe.index', ['course' => $classe->course_id])
+            ->with('success', 'Aula apagada com sucesso!');
+       
+        }catch(Exception $e){
+            
+            //Redirecionar o usuário e enviar mensagem de erro
+            return redirect()->route('classe.index', ['course' => $classe->course_id])
+            ->with('error', 'Aula não foi apagada!');
 
-        return redirect()->route('classe.index', ['course' => $classe->course_id])
-        ->with('success', 'Aula apagada com sucesso!');
+        }
+      
     }
 }
