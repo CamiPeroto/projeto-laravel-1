@@ -8,6 +8,7 @@ use App\Models\Course;
 use Exception;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClasseController extends Controller
 {
@@ -39,6 +40,12 @@ class ClasseController extends Controller
     {
         //Validar o formulário
         $request ->validated();
+
+        //Marca o ponto inicial da transação
+        DB::beginTransaction();
+
+        try{
+
         //Recuperar a última ordem da aula no curso
         $lastOrderClasse = Classe::where('course_id', $request->course_id )
         ->orderBy('order_classe', 'DESC')
@@ -53,10 +60,22 @@ class ClasseController extends Controller
 
         ]);
 
+        //Operação concluída com exito
+        DB::commit();
+
         //Redirecionar o usuário e enviar mensagem de sucesso
         return redirect()->route('classe.index', ['course' => $request->course_id])
         ->with('success', 'Aula cadastrada com sucesso!');
+        }  catch(Exception $e){
+
+        //Operação não é concluída com êxito
+        DB::rollBack();
+
+        //Redirecionar o usuário e enviar mensagem de erro
+        return back()->withInput()->with('error', 'Aula não editada!');
+    
     }
+}
 
     //Carregar formulário para editar a aula
     public function edit(Classe $classe)
@@ -68,17 +87,32 @@ class ClasseController extends Controller
     {
         $request -> validated();
 
+        //Marca o ponto inicial da transação
+        DB::beginTransaction();
+
+        try{
+
         //Editar as informações no banco
         $classe -> update([
             'name' => $request->name,
             'description' => $request->description,
         ]);
+         //Operação concluída com exito
+         DB::commit();
+
+        }catch(Exception $e){
+        //Operação não é concluída com êxito
+        DB::rollBack();
+        //Redirecionar o usuário e enviar mensagem de erro          
+          return back()->withInput()->with('error', 'Aula não cadastrada!');
+        }
        
         //Redirecionar o usuário e enviar mensagem de sucesso
         return redirect()->route('classe.index', ['course' => $classe->course_id])
         ->with('success', 'Aula editada com sucesso!');
 
     }
+
     public function destroy(Classe $classe)
     {
         try{
