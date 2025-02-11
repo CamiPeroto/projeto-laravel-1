@@ -10,6 +10,9 @@
             <li class="breadcrumb-item">
                 <a href="#" class= "text-decoration-none">Dashboard</a>
             </li>
+            <li class="breadcrumb-item">
+                <a href="{{route('course.index')}}" class= "text-decoration-none">Cursos</a>
+            </li>
             <li class="breadcrumb-item active">Aulas</li>
         </ol>
     </div>
@@ -18,20 +21,22 @@
         <div class="card-header hstack gap-2">
             <span >Listar</span>
             <span class="ms-auto">
+                <a href="{{ route('course.show', ['course'=> $course->id]) }}" 
+                    class=" btn btn-primary btn-sm">Curso</a>
                 <a href="{{ route('classe.create', [ 'course' => $course->id ]) }}" 
                     class=" btn btn-success btn-sm">Cadastrar</a>
             </span>
         </div>
 
         <div class="card-body">
-            <x-alert />
+                <x-alert />
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                       <th class="d-none d-sm-table-cell">ID</th>
-                      <th>Curso</th>
+                      <th class="d-none d-sm-table-cell">Curso</th>
                       <th>Nome</th>
-                      <th class="d-none d-md-table-cell">Ordem</th>
+                      <th>Ordem</th>
                       <th class="text-center">Ações</th>
                       
                     </tr>
@@ -43,9 +48,9 @@
                         @forelse ($classes as $classe)
                         <tr>
                                 <th class="d-none d-sm-table-cell">{{ $classe->id }}</th>
-                                <td>{{ $classe->course->name }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $classe->course->name }}</td>
                                 <td>{{ $classe->name }}</td>
-                                <td class="d-none d-md-table-cell">{{$classe->order_classe}}</td>
+                                <td>{{$classe->order_classe}}</td>
                                 
                                 
                                 <td class="d-md-flex flex-row justify-content-center">
@@ -54,7 +59,7 @@
                                     class="btn btn-info btn-sm me-1 mb-1 mb-md-0">Visualizar</a>
                                 
                                     <a href="{{ route('classe.edit', ['classe'=> $classe->id]) }}" 
-                                    class="btn btn-primary btn-sm me-1 mb-1 mb-md-0">Editar</a>
+                                    class="btn btn-warning btn-sm me-1 mb-1 mb-md-0">Editar</a>
                                 
                                     <form action="{{route('classe.destroy', ['classe' =>$classe->id]) }}" method="POST">
                                         @csrf
