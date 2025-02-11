@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use Exception;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -15,7 +15,7 @@ class CourseController extends Controller
     public function index(){
         //Recuperar os registros do banco de dados
         //$courses = Course::where('id', 1000)->get();
-        $courses = Course::orderBy('id','DESC' )->get(); //recupera TODOS os registros 
+        $courses = Course::orderBy('id','ASC' )->get(); //recupera TODOS os registros em ordem ascendente
         // $courses = Course::paginate(10); //recupera 10 registros
 
         // //Salvar log
