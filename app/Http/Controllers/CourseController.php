@@ -126,7 +126,7 @@ class CourseController extends Controller
             //Salvar log
             Log::info('Curso apagado.', ['course_id'=>$course->id]); 
 
-            return redirect()->route('course.index')->with('success', 'Curso excluído com sucesso');
+            return redirect()->route('course.index')->with('success', 'Curso excluído com sucesso!');
         
         } catch(Exception $e){
             

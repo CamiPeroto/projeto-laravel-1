@@ -10,6 +10,9 @@
                 <li class="breadcrumb-item">
                     <a href="#" class= "text-decoration-none">Dashboard</a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="{{route('course.index') }}" class= "text-decoration-none">Cursos</a>
+                </li>
                 <li class="breadcrumb-item active">Curso</li>
             </ol>
         </div>
