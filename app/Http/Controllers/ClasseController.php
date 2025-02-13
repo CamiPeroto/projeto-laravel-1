@@ -80,7 +80,11 @@ class ClasseController extends Controller
     //Carregar formulário para editar a aula
     public function edit(Classe $classe)
     {
-        return view ('classes.edit', ['classe' => $classe]);
+        return view ('classes.edit', 
+        ['classe' => $classe,
+        'course' => $classe->course // Passa o curso relacionado
+    
+    ]);
     }
 
     public function update( ClasseRequest $request, Classe $classe)

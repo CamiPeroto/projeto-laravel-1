@@ -33,12 +33,14 @@
                  @csrf
                     @method('PUT')
 
-                {{-- <div class="col-6">
-                    <label for="Curso" class="form-label">Curso: </label>
-                    <input type="text" name="name_course" class="form-control" id="name_course" value="{{$course->name}} "disabled>
-                </div> --}}
+                <input type="hidden" name="course_id" id="course_id" value=" {{$course->id}} ">
 
-                <div class="col-12">
+                <div class="col-6">
+                   <label for="Curso" class="form-label">Curso: </label>
+                   <input type="text" name="name_course" class="form-control" id="name_course" value="{{$course->name}} "disabled>
+                 </div>
+
+                <div class="col-6">
                     <label for="name" class="form-label">Nome:</label>
                     <input type="text" name="name" class="form-control" id="name" placeholder="Nome da Aula" value="{{old('name', $classe->name )}}" required>
                 </div>
@@ -48,7 +50,7 @@
                    <div class="form-floating mb-3">
                        <textarea class="form-control" placeholder="Descrição da aula" name="description" id="description" style="height: 120px">{{old('description', $classe->description)}}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    <button type="submit" class="btn btn-warning btn-sm">Salvar</button>
                   </div>
 
                 </form>   

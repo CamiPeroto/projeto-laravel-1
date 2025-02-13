@@ -49,7 +49,7 @@
                      <input type="text" name="price" class="form-control" id="price" placeholder="Preço do Curso: Ex: 22.50" value="{{old('price', $course->price)}}" required>
                    </div>
                    <div class="col-12">
-                     <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                     <button type="submit" class="btn btn-warning btn-sm">Salvar</button>
                    </div>
 
 
