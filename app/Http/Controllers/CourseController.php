@@ -15,8 +15,12 @@ class CourseController extends Controller
     public function index(){
         //Recuperar os registros do banco de dados
         //$courses = Course::where('id', 1000)->get();
-        $courses = Course::orderBy('id','ASC' )->get(); //recupera TODOS os registros em ordem ascendente
-        // $courses = Course::paginate(10); //recupera 10 registros
+        $courses = Course::orderBy('id','ASC' )
+        ->paginate(5);
+        // ->get(); //recupera TODOS os registros em ordem ascendente
+
+        // $courses = Course::paginate(10); //recupera 10 registros na paginaçãp
+        
 
         // //Salvar log
         // Log::info('Listar cursos acessado.'); info informa o fluxo normal

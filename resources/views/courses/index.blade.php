@@ -69,18 +69,13 @@
                            
                         @endforelse
                       </tbody>
-
-
-
                 </table>
 
-
+            {{-- Imprimir a paginação --}}
+            {{ $courses->links() }}
 
             </div>
-
         </div>
-
-
     </div>
     {{-- imprimir os registros
     @forelse ($courses as $course)

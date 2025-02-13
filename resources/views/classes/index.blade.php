@@ -76,18 +76,9 @@
                        
                     @endforelse
                   </tbody>
-
-
-
             </table>
-
-
-
         </div>
-
     </div>
-
-
 </div>
 
 
@@ -130,5 +121,6 @@
     @empty
       <p style="color: #f00"> Nenhuma aula encontrada!</p>
     @endforelse --}}
+
 
  @endsection
