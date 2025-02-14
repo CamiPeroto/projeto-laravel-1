@@ -10,6 +10,12 @@
                 <li class="breadcrumb-item">
                     <a href="#" class= "text-decoration-none">Dashboard</a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="#" class= "text-decoration-none">Curso</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}" class= "text-decoration-none">Aulas</a>
+                </li>
                 <li class="breadcrumb-item active">Aula</li>
             </ol>
         </div>
@@ -21,15 +27,15 @@
                 <span class="ms-auto d-sm-flex flex-row">
 
                     <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}" 
-                        class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0">Aulas </a>
+                        class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0"><i class="fa-solid fa-list"></i> Aulas </a>
                 
                      <a href="{{ route('classe.edit', ['classe'=> $classe->id]) }}" 
-                             class=" btn btn-warning btn-sm me-1 mb-1 mb-sm-0">Editar </a>
+                             class=" btn btn-warning btn-sm me-1 mb-1 mb-sm-0"><i class="fa-regular fa-pen-to-square"></i> Editar </a>
 
                         <form action="{{route('classe.destroy', ['classe' =>$classe->id]) }}" method="POST">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger btn-sm me-1" onclick="return confirm('Tem certeza que deseja apagar o registro ?')">Apagar</button>
+                        <button type="submit" class="btn btn-danger btn-sm me-1" onclick="return confirm('Tem certeza que deseja apagar o registro ?')"><i class="fa-regular fa-square-minus"></i> Apagar</button>
                             </form>
 
                 </span>
@@ -45,6 +51,9 @@
                     
                     <dt class="col-sm-3">Nome: </dt>
                     <dd class="col-sm-9">{{ $classe->name }}</dd>
+                    
+                    <dt class="col-sm-3">Descrição: </dt>
+                    <dd class="col-sm-9">{{$classe->description }}</dd>
 
                     <dt class="col-sm-3">Curso: </dt>
                     <dd class="col-sm-9">{{ $classe->course->name }}</dd>
@@ -52,9 +61,6 @@
                     <dt class="col-sm-3">Ordem: </dt>
                     <dd class="col-sm-9">{{$classe->order_classe}}</dd>
 
-                    <dt class="col-sm-3">Descrição: </dt>
-                    <dd class="col-sm-9">{{$classe->description }}</dd>
-                   
                     <dt class="col-sm-3">Cadastrado em: </dt>
                     <dd class="col-sm-9">{{ \Carbon\Carbon::parse($classe->created_at)->format('d/m/Y H:i:s') }}</dd>
 

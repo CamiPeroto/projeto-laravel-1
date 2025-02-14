@@ -13,7 +13,7 @@
 
 <body class="sb-nav-fixed">
 
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-nav">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="#">Camila</a>
         <!-- Sidebar Toggle-->
