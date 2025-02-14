@@ -7,6 +7,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles_sbadmin.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles_admin.css') }}" rel="stylesheet">
     <title>Cursos</title>
 </head>
 
@@ -37,7 +38,7 @@
 
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
 

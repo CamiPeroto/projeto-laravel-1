@@ -14,7 +14,7 @@
             </ol>
         </div>
 
-        <div class="card mb-4">
+        <div class="card mb-4 border-light shadow">
             <div class="card-header hstack gap-2">
                 <span >Listar</span>
                 <span class="ms-auto">
@@ -25,7 +25,7 @@
 
             <div class="card-body">
                 <x-alert />
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                           <th class="d-none d-sm-table-cell">ID</th>
