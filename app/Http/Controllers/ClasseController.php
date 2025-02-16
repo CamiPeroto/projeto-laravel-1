@@ -20,20 +20,20 @@ class ClasseController extends Controller
         ->get();
 
         //carregar view
-        return view('classes.index',['course' => $course,'classes'=>$classes]);
+        return view('classes.index',['menu' => 'courses', 'course' => $course,'classes'=>$classes]);
     }
     
     // Detalhes da aula
     public function show(Classe $classe)
     {
         // Carregar a VIEW
-        return view('classes.show', ['classe' => $classe]);
+        return view('classes.show', ['menu' => 'courses', 'classe' => $classe]);
     }
 
     public function create(Course $course)
     {
         //Carregar a view
-        return view ('classes.create', ['course' => $course]);
+        return view ('classes.create', ['menu' => 'courses', 'course' => $course]);
     }
 
     public function store (ClasseRequest $request) //recebe os dados que vem do formulário e injeta em $request
@@ -81,7 +81,7 @@ class ClasseController extends Controller
     public function edit(Classe $classe)
     {
         return view ('classes.edit', 
-        ['classe' => $classe,
+        ['menu' => 'courses', 'classe' => $classe,
         'course' => $classe->course // Passa o curso relacionado
     
     ]);

@@ -26,7 +26,7 @@ class CourseController extends Controller
         // Log::info('Listar cursos acessado.'); info informa o fluxo normal
        
         //Carregar view de cursos
-        return view('courses.index', ['courses'=> $courses]);
+        return view('courses.index', ['menu' => 'courses', 'courses'=> $courses]);
     }
     
     // Visualizar os cursos
@@ -35,14 +35,14 @@ class CourseController extends Controller
     //    $course = Course::where('id', $request->course)->first(); outra forma de recuperar os registros
        
         //Carregar view 
-        return view('courses.show', ['course' => $course]);
+        return view('courses.show', ['menu' => 'courses', 'course' => $course]);
     }
     
     // Carregar o formulário cadastrar novo curso
     public function create(){
        
         //Carregar view 
-        return view('courses.create');
+        return view('courses.create', ['menu' => 'courses']);
     }
     
     // Cadastrar o novo curso no banco de dados
@@ -85,7 +85,7 @@ class CourseController extends Controller
     public function edit(Course $course){
        
         //Carregar view 
-        return view('courses.edit', ['course' => $course]);
+        return view('courses.edit', ['menu' => 'courses', 'course' => $course]);
     }
     
     // Editar o registro no banco de dados
