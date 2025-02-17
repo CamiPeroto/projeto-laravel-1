@@ -60,7 +60,7 @@ class CourseController extends Controller
 
         $course = Course::create([
             'name' => $request->name,
-            'price' => $request->price,
+            'price' => str_replace(',', '.', str_replace(',', '', $request ->price)),
         ]);
 
 
@@ -101,7 +101,8 @@ class CourseController extends Controller
         //Editar as informações do registro
         $course->update([
             'name' =>$request->name,
-            'price'=>$request->price,
+            'price'=> str_replace(',', '.', str_replace('.', '', $request ->price)),
+        
         ]);
 
         DB::commit();

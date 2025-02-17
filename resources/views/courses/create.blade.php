@@ -42,7 +42,7 @@
                    </div>
                    <div class="col-12">
                      <label for="price" class="form-label">Preço</label>
-                     <input type="text" name="price" class="form-control" id="price" placeholder="Preço do Curso: Ex: 22.50" value="{{old('price')}}" required>
+                     <input type="text" name="price" class="form-control" id="price" placeholder="Preço do Curso" value="{{old('price')}}" required>
                    </div>
                    <div class="col-12">
                      <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
