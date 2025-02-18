@@ -17,12 +17,12 @@ class UserController extends Controller
        //Recuperar os registros do banco     
     $users = User::orderByDesc('created_at')->paginate(10);
 
-    return view(   'user.index', ['menu' => 'users', 'users' => $users]);
+    return view(   'users.index', ['menu' => 'users', 'users' => $users]);
     }
 
     public function show(User $user)
     {
-        return view ('users.show', ['menu' => 'users', 'users' => $user]);
+        return view ('users.show', ['menu' => 'users', 'user' => $user]);
     }
 
     public function create()
