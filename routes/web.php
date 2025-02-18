@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,19 @@ Route::get('/', function () {
 Route::get('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index'); 
 
 // Rota, método pra criar na controller e nome de referência p/ view
+
+// //Usuários
+Route::get('/index-user', [UserController::class, 'index'])->name('user.index');
+Route::get('/show-user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/create-user', [UserController::class, 'create'])->name('user.create');
+Route::post('/store-user', [UserController::class, 'store'])->name('user.store');
+Route::get('/edit-user/{user}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/update-user/{user}', [UserController::class, 'update'])->name('user.update');
+
+Route::get('/edit-user-password/{user}', [UserController::class, 'editPassword'])->name('user.edit-password');
+Route::put('/update-user-password/{user}', [UserController::class, 'updatePassword'])->name('user.update-password');
+Route::delete('/destroy-user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
 //Cursos
 Route::get('/index-course', [CourseController::class, 'index'])->name('course.index'); //listar os cursos
 Route::get('/show-course/{course}', [CourseController::class, 'show'])->name('course.show'); //control + D para selecionar a mesma palavra e editar
