@@ -3,6 +3,7 @@
 @section('content')
 
 <h2>Editar Aula</h2>
+<!-- OI gente -->
 
 <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}">
     <button type="button">Listar Aulas</button>    
