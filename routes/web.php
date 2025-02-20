@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 //Login
 Route::get('/', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'loginProcess'])->name('login.process'); 
+//Sair do sistema
+Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy'); 
 
 // Dashboard
 Route::get('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index'); 

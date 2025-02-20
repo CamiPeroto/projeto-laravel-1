@@ -27,4 +27,13 @@ class LoginController extends Controller
         //Redirecionar o usuário
         return redirect()->route('dashboard.index');
     }
+
+    //Deslogar o usuário
+    public function destroy()
+    {
+        //Deslogar o usuário
+        Auth::logout();
+        //Redirecionar o usuário, enviar mensagem de sucesso
+        return redirect()->route('login.index')->with('success', 'Deslogado com sucesso!');
+    }
 }
