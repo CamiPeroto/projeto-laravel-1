@@ -17,6 +17,9 @@ Route::get('/', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'loginProcess'])->name('login.process'); 
 //Sair do sistema
 Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy'); 
+//Cadastrar usuário no sistema
+Route::get('/create-user-login', [LoginController::class, 'create'])->name('login.create-user');
+Route::post('/store-user-login', [LoginController::class, 'store'])->name('login.store-user');
 
 
 //Rotas privadas

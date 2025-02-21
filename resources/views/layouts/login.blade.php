@@ -13,9 +13,19 @@
 </head>
 
 <body class="bg-secondary">   
-    
-    @yield('content')
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
 
-</body>
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                         @yield('content')
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body> 
 
 </html>

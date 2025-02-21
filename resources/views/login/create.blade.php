@@ -1,24 +1,23 @@
 @extends('layouts.login')
 
 @section('content')
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-
-            <main>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4"> <i class="fa-solid fa-lock"></i> Área Restrita</h3>
+                                    <h3 class="text-center font-weight-light my-4"> <i class="fa-solid fa-user-plus"></i> Novo Usuário</h3>
                                 </div>
                                 <div class="card-body">
 
                                     <x-alert />
 
-                                    <form action="{{ route('login.process') }}" method="POST">
+                                    <form action="{{ route('login.store-user') }}" method="POST">
                                         @csrf
                                         @method('POST')
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" name="name" class="form-control" id="name" placeholder="Digite o nome do usuário" value="{{ old('name') }}">
+                                            <label for="name">Nome</label>
+                                        </div>
 
                                         <div class="form-floating mb-3">
                                             <input type="email" name="email" class="form-control" id="email" placeholder="Digite o e-mail de usuário" value="{{ old('email') }}">
@@ -31,8 +30,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a href="#" class="small text-decoration-none">Esqueceu a senha?</a>
-                                            <button type="submit" class="btn btn-primary">Acessar</button>
+                                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                                         </div>
 
                                     </form>
@@ -40,20 +38,13 @@
 
                                 <div class="card-footer text-center py-3">
                                     <div class="small">
-                                        Precisa de uma conta? <a href="{{route('login.create-user')}}" class="text-decoration-none">Inscrever-se!</a>
+                                        <a href="{{route('login.index')}}" class="text-decoration-none">Clique aqui </a> para acessar.
                                     </div>
 
-                                    <div class="small">
-                                        Usuário: camila@gmail.com.br<br>
-                                        Senha: 123456a
-                                    </div>
+                    
                                 </div>
 
                             </div>
                         </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
 @endsection
+
