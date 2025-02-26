@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 
@@ -79,7 +80,20 @@ class ForgotPasswordController extends Controller
         ]);
 
         try{
-            //parei aos 11 min
+         $status =  Password::reset( $request->only('email', 'password', 'password_confirmation', 'token' ),
+           
+           function (User $user, string $password){
+            $user->forceFill([
+                'password' => Hash::make($password)
+            ]);
+            $user->save(); 
+           }
+        );
+        Log::info('senha atualizada ', ['resposta' => $status, 'email' => $request->email ]);
+         //Redirecionar o usuário
+         return $status === Password::PASSWORD_RESET ? redirect()
+         ->route('login.index')->with('success', 'Senha atualizada com sucesso!') :
+         redirect()->route('login.index')->with('error',__($status));
 
         }catch (Exception $e){
             Log::warning('Erro ao atualizar senha. ', ['error' => $e->getMessage(),
