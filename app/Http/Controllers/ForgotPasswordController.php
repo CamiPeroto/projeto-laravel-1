@@ -68,7 +68,27 @@ class ForgotPasswordController extends Controller
 
      public function showResetPassword(Request $request)
      {
-        dd($request->token);
+        return view ('login.resetPassword', ['token' => $request->token]);
+     }
+
+     public function submitResetPassword(Request $request)
+     {
+        $request -> validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        try{
+            //parei aos 11 min
+
+        }catch (Exception $e){
+            Log::warning('Erro ao atualizar senha. ', ['error' => $e->getMessage(),
+        'email' => $request->email]);
+
+            //Redirecionar o usuário
+            return back()->withInput()->with('error', 'Tente novamente mais tarde');
+
+        }
      }
 
 }
