@@ -26,7 +26,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-center mt-4 mb-0">
-                                            <button type="submit" class="btn btn-primary">Recuperar</button>
+                                            <button type="submit" class="btn btn-primary" onclick="this.innerText = 'Recuperando...' ">Recuperar</button>
                                         </div>
 
                                     </form>

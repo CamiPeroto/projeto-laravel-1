@@ -27,6 +27,8 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPass
 ->name('forgot-password.show');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'submitForgotPassword'])
 ->name('forgot-password.submit');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword'])
+->name('password.reset');
 
 
 //Rotas privadas
