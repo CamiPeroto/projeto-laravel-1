@@ -20,6 +20,12 @@ class PermissionSeeder extends Seeder
         'edit-course',
         'destroy-course',
 
+        'index-classe',
+        'show-classe',
+        'create-classe',
+        'edit-classe',
+        'destroy-classe',
+
        ];
 
        foreach($permissions as $permission ){

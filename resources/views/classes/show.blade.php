@@ -28,16 +28,19 @@
 
                     <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}" 
                         class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0"><i class="fa-solid fa-list"></i> Aulas </a>
-                
-                     <a href="{{ route('classe.edit', ['classe'=> $classe->id]) }}" 
-                             class=" btn btn-warning btn-sm me-1 mb-1 mb-sm-0"><i class="fa-regular fa-pen-to-square"></i> Editar </a>
 
+                @can('edit-classe')
+                    <a href="{{ route('classe.edit', ['classe'=> $classe->id]) }}" 
+                    class=" btn btn-warning btn-sm me-1 mb-1 mb-sm-0"><i class="fa-regular fa-pen-to-square"></i> Editar </a> 
+                @endcan
+                     
+                        @can('destroy-classe')
                         <form action="{{route('classe.destroy', ['classe' =>$classe->id]) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger btn-sm me-1" onclick="return confirm('Tem certeza que deseja apagar o registro ?')"><i class="fa-regular fa-square-minus"></i> Apagar</button>
-                            </form>
-
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger btn-sm me-1" onclick="return confirm('Tem certeza que deseja apagar o registro ?')"><i class="fa-regular fa-square-minus"></i> Apagar</button>
+                        </form> 
+                        @endcan
                 </span>
             </div>
 
