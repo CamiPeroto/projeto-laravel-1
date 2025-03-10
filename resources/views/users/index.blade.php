@@ -16,8 +16,10 @@
             <div class="card-header hstack gap-2">
                 <span>Listar</span>
                 <span class="ms-auto">
-                    <a href="{{ route('user.create') }}" class="btn btn-success btn-sm"><i
-                            class="fa-regular fa-square-plus"></i> Cadastrar</a>
+                    @can('create-user')
+                        <a href="{{ route('user.create') }}" class="btn btn-success btn-sm"><i
+                        class="fa-regular fa-square-plus"></i> Cadastrar</a>
+                    @endcan
                 </span>
             </div>
             <div class="card-body">
@@ -42,24 +44,27 @@
                                 <td class="d-none d-md-table-cell">{{ $user->email }}</td>
                                 <td class="d-md-flex flex-row justify-content-center">
 
-                                    <a href="{{ route('user.show', ['user' => $user->id]) }}"
-                                        class="btn btn-primary btn-sm me-1 mb-1">
-                                        <i class="fa-regular fa-eye"></i> Visualizar
+                                    @can('show-user')
+                                        <a href="{{ route('user.show', ['user' => $user->id]) }}"
+                                            class="btn btn-primary btn-sm me-1 mb-1">
+                                            <i class="fa-regular fa-eye"></i> Visualizar
+                                        </a>
+                                    @endcan
+                                        @can('edit-user')
+                                            <a href="{{ route('user.edit', ['user' => $user->id]) }}"
+                                                class="btn btn-warning btn-sm me-1 mb-1">
+                                                <i class="fa-solid fa-pen-to-square"></i> Editar
+                                        @endcan
                                     </a>
-
-                                    <a href="{{ route('user.edit', ['user' => $user->id]) }}"
-                                        class="btn btn-warning btn-sm me-1 mb-1">
-                                        <i class="fa-solid fa-pen-to-square"></i> Editar
-                                    </a>
-
-                                    <form method="POST" action="{{ route('user.destroy', ['user' => $user->id]) }}">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger btn-sm me-1 mb-1"
+                                    @can('destroy-user')
+                                        <form method="POST" action="{{ route('user.destroy', ['user' => $user->id]) }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm me-1 mb-1"
                                             onclick="return confirm('Tem certeza que deseja apagar este registro?')"><i
-                                                class="fa-regular fa-trash-can"></i> Apagar</button>
-                                    </form>
-
+                                            class="fa-regular fa-trash-can"></i> Apagar</button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @empty
