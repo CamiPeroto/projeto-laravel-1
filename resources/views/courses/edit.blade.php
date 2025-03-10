@@ -26,10 +26,6 @@
                     <a href="{{route('course.index') }}"class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0"><i class="fa-solid fa-list"></i> Listar </a>
                     <a href="{{ route('course.show', ['course' =>$course->id]) }}"class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0"> <i class="fa-regular fa-eye"></i> Visualizar </a>
 
-                           
-
-                     
-
                 </span>
             </div>
 
@@ -49,22 +45,16 @@
                      <input type="text" name="price" class="form-control" id="price" placeholder="Preço do Curso: "
                       value="{{old('price',isset($course->price) ? number_format( $course->price, '2', ',' , '.') : '') }}" required>
                    </div>
-                   <div class="col-12">
-                     <button type="submit" class="btn btn-warning btn-sm">Salvar</button>
-                   </div>
-
-
+                   @can('edit-course')
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-warning btn-sm">Salvar</button>
+                    </div>
+                   @endcan
                 </form>
-                
-
             </div>
-
         </div>
-
-
     </div>
     
-   
 @endsection
     
  
