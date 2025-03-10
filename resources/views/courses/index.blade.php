@@ -47,7 +47,7 @@
                                     
                                     <td class="d-md-flex flex-row justify-content-center">
                                          
-                                        @can('update', $post)
+                                        @can('index-classe')
                                             <a href="{{ route('classe.index', ['course'=> $course->id]) }}" 
                                                 class="btn btn-info btn-sm me-1 mb-1 mb-md-0"> <i class="fa-solid fa-list"></i> Aulas  </a> 
                                         @endcan
