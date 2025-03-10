@@ -39,6 +39,13 @@ class RoleSeeder extends Seeder
                 'create-classe',
                 'edit-classe',
                 'destroy-classe',
+
+                'index-user',
+                'show-user',
+                'create-user',
+                'edit-user',
+                'edit-user-password',
+                'destroy-user',
             ]);
 
         if (!Role::where('name', 'Professor')->first()){
