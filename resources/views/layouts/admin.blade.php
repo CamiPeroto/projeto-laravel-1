@@ -44,10 +44,13 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
+                        @can('index-user')
                         <a @class(['nav-link', 'active' => isset($menu) && $menu == 'users']) href="{{route('user.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             Usuários 
                         </a>
+                        @endcan
+                       
                         @can('index-course')
                             <a @class(['nav-link', 'active' => isset($menu) && $menu == 'courses']) href="{{route('course.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
