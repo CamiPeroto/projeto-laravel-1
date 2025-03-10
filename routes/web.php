@@ -58,13 +58,20 @@ Route::get('/edit-user-password/{user}', [UserController::class, 'editPassword']
 Route::put('/update-user-password/{user}', [UserController::class, 'updatePassword'])->name('user.update-password');
 Route::delete('/destroy-user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 //Cursos
-Route::get('/index-course', [CourseController::class, 'index'])->name('course.index'); //listar os cursos
-Route::get('/show-course/{course}', [CourseController::class, 'show'])->name('course.show'); //control + D para selecionar a mesma palavra e editar
-Route::get('/create-course', [CourseController::class, 'create'])->name('course.create');
-Route::post('/store-course', [CourseController::class, 'store'])->name('course.store'); //post para salvar creates
-Route::get('/edit-course/{course}', [CourseController::class, 'edit'])->name('course.edit');
-Route::put('/update-course/{course}', [CourseController::class, 'update'])->name('course.update'); //put recomendado para atualizar no banco
-Route::delete('/destroy-course/{course}', [CourseController::class, 'destroy'])->name('course.destroy'); // delete para apagar registros
+Route::get('/index-course', [CourseController::class, 'index'])->name('course.index')
+->middleware('permission:index-course'); //listar os cursos
+Route::get('/show-course/{course}', [CourseController::class, 'show'])->name('course.show')
+->middleware('permission:show-course');; //control + D para selecionar a mesma palavra e editar
+Route::get('/create-course', [CourseController::class, 'create'])->name('course.create')
+->middleware('permission:create-course');
+Route::post('/store-course', [CourseController::class, 'store'])->name('course.store')
+->middleware('permission:create-course');; //post para salvar creates
+Route::get('/edit-course/{course}', [CourseController::class, 'edit'])->name('course.edit')
+->middleware('permission:edit-course');
+Route::put('/update-course/{course}', [CourseController::class, 'update'])->name('course.update')
+->middleware('permission:edit-course'); //put recomendado para atualizar no banco
+Route::delete('/destroy-course/{course}', [CourseController::class, 'destroy'])->name('course.destroy')
+->middleware('permission:destroy-course'); // delete para apagar registros
 //Aulas
 Route::get('/index-classe/{course}', [ClasseController::class, 'index'])->name('classe.index');
 Route::get('/show-classe/{classe}', [ClasseController::class, 'show'])->name('classe.show');
