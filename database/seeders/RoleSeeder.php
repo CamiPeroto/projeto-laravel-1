@@ -68,6 +68,14 @@ class RoleSeeder extends Seeder
                 'create-classe',
                 'edit-classe',
                 'destroy-classe',
+
+                'index-user',
+                'show-user',
+                'create-user',
+                'edit-user',
+                'destroy-user',
+
+
             ]);
 
         if (!Role::where('name', 'Tutor')->first()){
@@ -86,6 +94,9 @@ class RoleSeeder extends Seeder
             'index-classe',
             'show-classe',
             'edit-classe',
+
+            'index-user',
+            'show-user',
             
     ]);
 
