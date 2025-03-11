@@ -102,5 +102,17 @@ Route::delete('/destroy-classe/{classe}', [ClasseController::class, 'destroy'])-
 //Papéis
 Route::get('/index-role', [RoleController::class, 'index'])->name('role.index')
 ->middleware('permission:index-role'); //listar os papéis
+Route::get('/show-role/{role}', [RoleController::class, 'show'])->name('role.show')
+->middleware('permission:show-role');
+Route::get('/create-role', [RoleController::class, 'create'])->name('role.create')
+->middleware('permission:create-role');
+Route::post('/store-role', [RoleController::class, 'store'])->name('role.store')
+->middleware('permission:create-role');; //post para salvar creates
+Route::get('/edit-role/{role}', [RoleController::class, 'edit'])->name('role.edit')
+->middleware('permission:edit-role');
+Route::put('/update-role/{role}', [RoleController::class, 'update'])->name('role.update')
+->middleware('permission:edit-role'); //put recomendado para atualizar no banco
+Route::delete('/destroy-role/{role}', [RoleController::class, 'destroy'])->name('role.destroy')
+->middleware('permission:destroy-role'); // delete para apagar registros
 
 }); //fim do middleware

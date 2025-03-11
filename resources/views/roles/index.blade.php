@@ -5,12 +5,11 @@
     <div class="container-fluid px-4">
         <div class="mb-1 hstack gap-2">
             <h2 class="mt-3">Papel</h2>
-
             <ol class="breadcrumb mb-3 mt-3 ms-auto">
                 <li class="breadcrumb-item">
-                    <a href="#" class= "text-decoration-none">Dashboard</a>
+                    <a href="{{ route('dashboard.index') }}" class= "text-decoration-none">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Cursos</li>
+                <li class="breadcrumb-item active">Papéis</li>
             </ol>
         </div>
 
@@ -18,10 +17,10 @@
             <div class="card-header hstack gap-2">
                 <span >Listar</span>
                 <span class="ms-auto">
-                    {{-- @can('create-course')
-                        <a href="{{ route('course.create') }}" class=" btn btn-success btn-sm">
-                            Cadastrar <i class="fa-regular fa-square-plus"></i> </a> 
-                    @endcan --}}
+                    @can('create-role')
+                        <a href="{{ route('role.create') }}" class=" btn btn-success btn-sm">
+                         Cadastrar  <i class="fa-regular fa-square-plus"></i> </a> 
+                    @endcan
                 </span>
             </div>
 
@@ -46,8 +45,9 @@
                                     <td class="d-md-flex flex-row justify-content-center">
                                          
                                         {{-- @can('index-classe') --}}
-                                            <a href="#" 
-                                                class="btn btn-info btn-sm me-1 mb-1 mb-md-0"> <i class="fa-solid fa-list"></i> Permissões </a> 
+                                        <a href="{{ route('role.show', ['role' => $role->id]) }}" 
+                                        class="btn btn-info btn-sm me-1 mb-1 mb-md-0"> <i class="fa-solid fa-list"></i> Permissões </a>
+                                        
                                         {{-- @endcan --}}
                                     </td>
                                 </tr>
