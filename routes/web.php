@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
@@ -97,5 +98,9 @@ Route::put('/update-classe/{classe}', [ClasseController::class, 'update'])->name
 ->middleware('permission:edit-classe'); //put recomendado para atualizar no banco
 Route::delete('/destroy-classe/{classe}', [ClasseController::class, 'destroy'])->name('classe.destroy')
 ->middleware('permission:destroy-classe'); // delete para apagar registros
+
+//Papéis
+Route::get('/index-role', [RoleController::class, 'index'])->name('role.index')
+->middleware('permission:index-role'); //listar os papéis
 
 }); //fim do middleware
