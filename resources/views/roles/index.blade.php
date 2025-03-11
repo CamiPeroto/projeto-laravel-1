@@ -31,7 +31,7 @@
                         <tr>
                           <th class="d-none d-sm-table-cell">ID</th>
                           <th>Nome</th>
-                          <th class="text-center">Detalhes</th>
+                          <th class="text-center">Ações</th>
                         </tr>
                       </thead>
 
@@ -47,6 +47,19 @@
                                         {{-- @can('index-classe') --}}
                                         <a href="{{ route('role.show', ['role' => $role->id]) }}" 
                                         class="btn btn-info btn-sm me-1 mb-1 mb-md-0"> <i class="fa-solid fa-list"></i> Permissões </a>
+
+                                        <a href="{{ route('role.edit', ['role' => $role->id]) }}" 
+                                        class="btn btn-warning btn-sm me-1 mb-1 mb-md-0"> <i class="fa-regular fa-pen-to-square"></i> Editar </a>
+
+                                        @can('destroy-role')
+                                            <form action="{{ route('role.destroy', ['role' => $role->id]) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger btn-sm me-1" onclick="return confirm('Tem certeza que deseja apagar o registro ?')"><i class="fa-regular fa-square-minus"></i> Apagar</button>
+                                            </form>  
+                                         @endcan
+
+                                        
                                         
                                         {{-- @endcan --}}
                                     </td>
