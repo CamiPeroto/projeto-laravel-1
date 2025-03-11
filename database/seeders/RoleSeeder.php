@@ -46,8 +46,12 @@ class RoleSeeder extends Seeder
                 'edit-user',
                 'edit-user-password',
                 'destroy-user',
-                
+    
                 'index-role',
+                'show-role',
+                'create-role',
+                'edit-role',
+                'destroy-role',
             ]);
 
         if (!Role::where('name', 'Professor')->first()){
@@ -76,6 +80,9 @@ class RoleSeeder extends Seeder
                 'create-user',
                 'edit-user',
                 'destroy-user',
+
+                'index-role',
+                'show-role',
 
 
             ]);

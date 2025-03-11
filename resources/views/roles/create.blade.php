@@ -35,11 +35,11 @@
                      <label for="Nome" class="form-label">Papel</label>
                      <input type="text" name="name" class="form-control" id="name" placeholder="Nome do Papel">
                    </div>
-                   {{-- @can('create-role') --}}
+                   @can('create-role')
                         <div class="col-12">
                             <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
                         </div>
-                   {{-- @endcan --}}
+                   @endcan
                 </form> 
             </div>
         </div>

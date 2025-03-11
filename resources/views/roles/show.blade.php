@@ -25,12 +25,12 @@
                    
                     @can('index-role')
                      <a href="{{route('role.index')}}" 
-                       class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0"> <i class="fa-solid fa-list"></i> Papéis </a>
+                    class=" btn btn-info btn-sm me-1 mb-1 mb-sm-0"> <i class="fa-solid fa-list"></i> Papéis </a>
                      @endcan   
-                    {{-- @can('edit-role') --}}
+                    @can('edit-role')
                          <a href="{{ route('role.edit', ['role' => $role->id]) }}" 
                          class=" btn btn-warning btn-sm me-1 mb-1 mb-sm-0"><i class="fa-regular fa-pen-to-square"></i> Editar </a>
-                     {{-- @endcan --}}
+                     @endcan
                     @can('destroy-role')
                          <form action="{{ route('role.destroy', ['role' => $role->id]) }}" method="POST">
                              @csrf

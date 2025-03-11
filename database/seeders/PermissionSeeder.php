@@ -34,8 +34,10 @@ class PermissionSeeder extends Seeder
         'destroy-user',
 
         'index-role',
-        
-
+        'show-role',
+        'create-role',
+        'edit-role',
+        'destroy-role',
        ];
 
        foreach($permissions as $permission ){
