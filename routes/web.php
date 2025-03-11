@@ -8,6 +8,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
@@ -114,5 +115,9 @@ Route::put('/update-role/{role}', [RoleController::class, 'update'])->name('role
 ->middleware('permission:edit-role'); //put recomendado para atualizar no banco
 Route::delete('/destroy-role/{role}', [RoleController::class, 'destroy'])->name('role.destroy')
 ->middleware('permission:destroy-role'); // delete para apagar registros
+
+//Permissões do papel 
+// Route::get('/index-role-permission/{role}', [RolePermissionController::class, 'index'])->name('role.index')
+// ->middleware('permission:index-role'); 
 
 }); //fim do middleware
