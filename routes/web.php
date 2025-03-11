@@ -65,7 +65,7 @@ Route::get('/edit-user-password/{user}', [UserController::class, 'editPassword']
 Route::put('/update-user-password/{user}', [UserController::class, 'updatePassword'])->name('user.update-password')
 ->middleware('permission:edit-user-password');;
 Route::delete('/destroy-user/{user}', [UserController::class, 'destroy'])->name('user.destroy')
-->middleware('destroy-user');
+->middleware('permission:destroy-user');
 //Cursos
 Route::get('/index-course', [CourseController::class, 'index'])->name('course.index')
 ->middleware('permission:index-course'); //listar os cursos

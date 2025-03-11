@@ -53,6 +53,24 @@
                             placeholder="Melhor e-mail do usuário" value="{{ old('email', $user->email) }}">
                     </div>
 
+                    <div class="col-6">
+                        <label for="roles" class="form-label">Papel: </label>
+                       <select name="roles" class="form-select" id="roles">
+                            <option value="">Selecionar</option>
+                            
+                            @forelse ($roles as $role)
+                                @if($role != 'Super Admin')
+                                <option {{ old('roles', $userRoles) == $role ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option>
+                                @else
+                                    @if (Auth::user()->hasRole('Super Admin'))
+                                     <option {{ old('roles', $userRoles) == $role ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option> 
+                                    @endif
+                                @endif
+                            @empty
+                            @endforelse
+                       </select>
+                    </div>
+
                     <div class="col-12">
                         <button type="submit" class="btn btn-warning btn-sm">Salvar</button>
                     </div>

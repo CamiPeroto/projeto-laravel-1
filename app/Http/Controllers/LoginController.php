@@ -71,6 +71,9 @@ class LoginController extends Controller
                 'email' => $request->email,
                 'password' => $request->password,
             ]);
+
+            //Cadastrar um papel para o usuário
+            $user->assignRole('Aluno');
              // Salvar log
              Log::info('Usuário cadastrado.', ['id' => $user->id]);
 

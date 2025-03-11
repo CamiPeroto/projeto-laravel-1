@@ -32,7 +32,7 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th class="d-none d-md-table-cell">E-mail</th>
-                            <th class="text-center">Ações</th>
+                            <th class="text-center">Ações</th>                    
                         </tr>
                     </thead>
                     <tbody>
@@ -41,7 +41,7 @@
                             <tr>
                                 <th>{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
-                                <td class="d-none d-md-table-cell">{{ $user->email }}</td>
+                                <td class="d-none d-md-table-cell">{{ $user->email }}</td>               
                                 <td class="d-md-flex flex-row justify-content-center">
 
                                     @can('show-user')

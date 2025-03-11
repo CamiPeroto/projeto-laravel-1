@@ -41,10 +41,28 @@
                             placeholder="Melhor e-mail do usuário" value="{{ old('email') }}">
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-6">
                         <label for="password" class="form-label">Senha: </label>
                         <input type="password" name="password" id="password" class="form-control"
                             placeholder="Senha com no mínimo 6 caracteres" value="{{ old('password') }}">
+                    </div>
+                    
+                    <div class="col-6">
+                        <label for="roles" class="form-label">Papel: </label>
+                       <select name="roles" class="form-select" id="roles">
+                            <option value="">Selecionar</option>
+                            
+                            @forelse ($roles as $role)
+                                @if($role != 'Super Admin')
+                                <option {{ old('roles') == $role ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option>
+                                @else
+                                    @if (Auth::user()->hasRole('Super Admin'))
+                                     <option {{ old('roles') == $role ? 'selected' : '' }} value="{{ $role }}">{{ $role }}</option> 
+                                    @endif
+                                @endif
+                            @empty
+                            @endforelse
+                       </select>
                     </div>
 
                     <div class="col-12">
