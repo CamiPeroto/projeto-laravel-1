@@ -44,10 +44,10 @@
                                 
                                     <td class="d-md-flex flex-row justify-content-center">
                                          
-                                        {{-- @can('show-role') --}}
+                                        @can('index-role-permission')
                                             <a href="{{ route('role-permission.index', ['role' => $role->id]) }}" 
                                             class="btn btn-info btn-sm me-1 mb-1 mb-md-0"> <i class="fa-solid fa-list"></i> Permissões </a>
-                                        {{-- @endcan --}}
+                                        @endcan
                                         @can('edit-role')
                                              <a href="{{ route('role.edit', ['role' => $role->id]) }}" 
                                              class="btn btn-warning btn-sm me-1 mb-1 mb-md-0"> <i class="fa-regular fa-pen-to-square"></i> Editar </a>
@@ -65,7 +65,6 @@
                             <div class="alert alert-danger" role="alert">
                                 Nenhum papel encontrado!
                               </div>
-                           
                         @endforelse
                       </tbody>
                 </table>

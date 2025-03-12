@@ -78,9 +78,6 @@ class RoleSeeder extends Seeder
 
                 'index-user',
                 'show-user',
-                'create-user',
-                'edit-user',
-                'destroy-user',
 
                 'index-role',
 
