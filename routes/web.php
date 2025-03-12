@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
@@ -119,5 +120,14 @@ Route::get('/index-role-permission/{role}', [RolePermissionController::class, 'i
 ->middleware('permission:index-role-permission'); 
 Route::get('/update-role-permission/{role}/{permission}', [RolePermissionController::class, 'update'])->name('role-permission.update')
 ->middleware('permission:update-role-permission'); 
+
+// Permissões ou páginas
+Route::get('/index-permission', [PermissionController::class, 'index'])->name('permission.index');
+Route::get('/show-permission/{permission}', [PermissionController::class, 'show'])->name('permission.show');
+Route::get('/create-permission', [PermissionController::class, 'create'])->name('permission.create');
+Route::post('/store-permission', [PermissionController::class, 'store'])->name('permission.store');
+Route::get('/edit-permission/{permission}', [PermissionController::class, 'edit'])->name('permission.edit');
+Route::put('/update-permission/{permission}', [PermissionController::class, 'update'])->name('permission.update');
+Route::delete('/destroy-permission/{permission}', [PermissionController::class, 'destroy'])->name('permission.destroy');
 
 }); //fim do middleware
