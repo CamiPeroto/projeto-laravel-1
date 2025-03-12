@@ -39,6 +39,7 @@ class PermissionSeeder extends Seeder
         ['title' => 'Apagar papel', 'name' => 'destroy-role'],
 
         ['title' => 'Listar permissões do papel', 'name' => 'index-role-permission'],
+        ['title' => 'Editar permissões do papel', 'name' => 'update-role-permission'],
        ];
 
        foreach($permissions as $permission ){

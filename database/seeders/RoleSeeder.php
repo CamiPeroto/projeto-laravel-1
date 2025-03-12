@@ -53,6 +53,7 @@ class RoleSeeder extends Seeder
                 'destroy-role',
 
                 'index-role-permission',
+                'update-role-permission',
             ]);
 
         if (!Role::where('name', 'Professor')->first()){
