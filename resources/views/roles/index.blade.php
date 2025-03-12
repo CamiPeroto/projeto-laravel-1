@@ -44,10 +44,10 @@
                                 
                                     <td class="d-md-flex flex-row justify-content-center">
                                          
-                                        @can('show-role')
-                                            <a href="{{ route('role.show', ['role' => $role->id]) }}" 
+                                        {{-- @can('show-role') --}}
+                                            <a href="{{ route('role-permission.index', ['role' => $role->id]) }}" 
                                             class="btn btn-info btn-sm me-1 mb-1 mb-md-0"> <i class="fa-solid fa-list"></i> Permissões </a>
-                                        @endcan
+                                        {{-- @endcan --}}
                                         @can('edit-role')
                                              <a href="{{ route('role.edit', ['role' => $role->id]) }}" 
                                              class="btn btn-warning btn-sm me-1 mb-1 mb-md-0"> <i class="fa-regular fa-pen-to-square"></i> Editar </a>

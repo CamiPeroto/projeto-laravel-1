@@ -117,7 +117,7 @@ Route::delete('/destroy-role/{role}', [RoleController::class, 'destroy'])->name(
 ->middleware('permission:destroy-role'); // delete para apagar registros
 
 //Permissões do papel 
-// Route::get('/index-role-permission/{role}', [RolePermissionController::class, 'index'])->name('role.index')
-// ->middleware('permission:index-role'); 
+Route::get('/index-role-permission/{role}', [RolePermissionController::class, 'index'])->name('role-permission.index')
+->middleware('permission:index-role-permission'); 
 
 }); //fim do middleware
