@@ -55,6 +55,10 @@ class RoleSeeder extends Seeder
                 'index-role-permission',
                 'update-role-permission',
             ]);
+            //Remover a permissão de acesso
+            // $admin->revokePermissionTo([
+            //     'update-role-permission',
+            // ]);
 
         if (!Role::where('name', 'Professor')->first()){
           $teacher = Role::create([
@@ -79,10 +83,6 @@ class RoleSeeder extends Seeder
 
                 'index-user',
                 'show-user',
-
-                'index-role',
-
-
             ]);
 
         if (!Role::where('name', 'Tutor')->first()){
