@@ -103,8 +103,6 @@ Route::delete('/destroy-classe/{classe}', [ClasseController::class, 'destroy'])-
 //Papéis
 Route::get('/index-role', [RoleController::class, 'index'])->name('role.index')
 ->middleware('permission:index-role'); //listar os papéis
-Route::get('/show-role/{role}', [RoleController::class, 'show'])->name('role.show')
-->middleware('permission:show-role');
 Route::get('/create-role', [RoleController::class, 'create'])->name('role.create')
 ->middleware('permission:create-role');
 Route::post('/store-role', [RoleController::class, 'store'])->name('role.store')
