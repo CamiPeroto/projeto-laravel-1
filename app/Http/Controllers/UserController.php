@@ -14,12 +14,26 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     //Listar os usuários
-    public function index()
+    public function index(Request $request)
     {
        //Recuperar os registros do banco     
-    $users = User::orderByDesc('created_at')->paginate(10);
+    // $users = User::orderByDesc('created_at')->paginate(10);
+    $users = User::when($request->has('name'), function ($whenQuery) use ($request){
+        $whenQuery->where('name', 'like', '%' . $request->name . '%');
+    })
+    ->when($request->has('email'), function ($whenQuery) use ($request){
+        $whenQuery->where('email', 'like', '%' . $request->email . '%');
+    })
+    ->orderByDesc('created_at')
+    ->paginate(10)
+    ->withQueryString();
 
-    return view(   'users.index', ['menu' => 'users', 'users' => $users]);
+    return view(   'users.index',[
+        'menu' => 'users',
+        'users' => $users,
+        'name' => $request->name,
+        'email' => $request->email,
+    ]);
     }
 
     public function show(User $user)

@@ -11,6 +11,36 @@
                 <li class="breadcrumb-item active">Usuários</li>
             </ol>
         </div>
+        <div class="card mb-4 mt-2 border-light shadow">
+            <div class="card-header">
+                <span>Pesquisar</span>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('user.index') }}">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" name="name" class="form-control" id="name" value="{{ $name }}" placeholder="Nome do usuário">
+
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="text" name="email" class="form-control" id="email" value="{{ $email }}" placeholder="Email do usuário">
+
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 mt-3 pt-3">
+                            <button type="submit" class="btn btn-info btn-md"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
+                            <a href=" {{route('user.index') }}" class="btn btn-warning btn-md"><i class="fa-solid fa-trash"></i> Limpar</a>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
 
         <div class="card mb-4 border-light shadow">
             <div class="card-header hstack gap-2">
