@@ -4,26 +4,42 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PermissionRequest;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
 
     // Listar as páginas
-    public function index()
+    public function index(Request $request)
     {
 
         // Recuperar os registros do banco dados
-        $permissions = Permission::orderBy('title')->paginate(40);
-
+        // $permissions = Permission::orderBy('title')->paginate(40);
+        $permissions = Permission::when($request->has('name'), function ($whenQuery) use ($request){
+            $whenQuery->where('name', 'like', '%' . $request->name . '%');
+        })
+        ->when($request->has('title'), function ($whenQuery) use ($request){
+            $whenQuery->where('title', 'like', '%' . $request->title . '%');
+        })
+        ->orderByDesc('title')
+        ->paginate(40)
+        ->withQueryString();
+        
         // Salvar log
         Log::info('Listar as páginas', ['action_user_id' => Auth::id()]);
 
         // Carregar a VIEW
-        return view('permissions.index', ['menu' => 'permissions', 'permissions' => $permissions]);
+        return view('permissions.index', [
+            'menu' => 'permissions',
+            'permissions' => $permissions,
+            'name' => $request ->name,
+            'title' => $request ->title,
+        ]);
     }
 
     // Detalhes da página

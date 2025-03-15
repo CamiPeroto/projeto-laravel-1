@@ -16,7 +16,7 @@ class UserController extends Controller
     //Listar os usuários
     public function index(Request $request)
     {
-       //Recuperar os registros do banco     
+    //Recuperar os registros do banco     
     // $users = User::orderByDesc('created_at')->paginate(10);
     $users = User::when($request->has('name'), function ($whenQuery) use ($request){
         $whenQuery->where('name', 'like', '%' . $request->name . '%');

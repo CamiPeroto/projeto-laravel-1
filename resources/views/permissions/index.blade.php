@@ -13,6 +13,40 @@
             </ol>
         </div>
 
+        <div class="card mb-4 mt-2 border-light shadow">
+            <div class="card-header">
+                <span>Pesquisar</span>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('permission.index') }}">
+                    {{-- <form action="#"> --}}
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-12">
+                            <label for="name" class="form-label">Title</label>
+                            <input type="text" name="title" class="form-control" id="title"
+                                value="{{ $title }}" placeholder="Título">
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <label for="name" class="form-label">Nome da Página</label>
+                            <input type="text" name="name" class="form-control" id="name"
+                                value="{{ $name }}" placeholder="Nome da página">
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 mt-3 pt-3">
+                            <button type="submit" class="btn btn-info btn-md"><i class="fa-solid fa-magnifying-glass"></i>
+                                Pesquisar</button>
+                            <a href=" {{ route('permission.index') }}" class="btn btn-warning btn-md"><i
+                                    class="fa-solid fa-trash"></i> Limpar</a>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
         <div class="card mb-4 border-light shadow">
 
             <div class="card-header hstack gap-2">
@@ -52,18 +86,19 @@
 
                                     @can('show-permission')
                                         <a href="{{ route('permission.show', ['permission' => $permission->id]) }}"
-                                        class="btn btn-primary btn-sm me-1 mb-1 mb-md-0"><i class="fa-regular fa-eye"></i>
-                                        Visualizar</a>
-                                    @endcan                                    
+                                            class="btn btn-primary btn-sm me-1 mb-1 mb-md-0"><i class="fa-regular fa-eye"></i>
+                                            Visualizar</a>
+                                    @endcan
 
                                     @can('edit-permission')
                                         <a href="{{ route('permission.edit', ['permission' => $permission->id]) }}"
-                                        class="btn btn-warning btn-sm me-1 mb-1 mb-md-0"><i
-                                            class="fa-regular fa-pen-to-square"></i> Editar</a>
-                                    @endcan                                    
+                                            class="btn btn-warning btn-sm me-1 mb-1 mb-md-0"><i
+                                                class="fa-regular fa-pen-to-square"></i> Editar</a>
+                                    @endcan
 
                                     @can('destroy-permission')
-                                        <form action="{{ route('permission.destroy', ['permission' => $permission->id]) }}" method="POST">
+                                        <form action="{{ route('permission.destroy', ['permission' => $permission->id]) }}"
+                                            method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm me-1"
