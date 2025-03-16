@@ -50,7 +50,11 @@
                         <a href="{{ route('user.create') }}" class="btn btn-success btn-sm"><i
                         class="fa-regular fa-square-plus"></i> Cadastrar</a>
                     @endcan
-                    <a href="{{ route('user.generate-pdf') }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-file-pdf"></i> Gerar PDF</a>
+                    {{-- <a href="{{ route('user.generate-pdf') }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-file-pdf"></i> Gerar PDF</a> --}}
+                    @can('generate-pdf-user')
+                        <a href="{{ url('generate-pdf-user?' . request()->getQueryString()) }} " class="btn btn-info btn-sm"><i
+                        class="fa-solid fa-file-pdf"></i> Gerar PDF</a>
+                    @endcan
                 </span>
             </div>
             <div class="card-body">

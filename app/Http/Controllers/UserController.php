@@ -220,10 +220,35 @@ class UserController extends Controller
             return redirect()->route('course.index')->with('error', 'Usuário não excluído!');
         }
     }
-    public function generatePdf()
+    public function generatePdf(Request $request)
     {
         //Recuperar os registros do banco
-       $users = User::orderByDesc('id')->get();
+        //$users = User::orderByDesc('id')->get();
+        //Recuperar os registros do banco     
+   
+        $users = User::when($request->has('name'), function ($whenQuery) use ($request){
+            $whenQuery->where('name', 'like', '%' . $request->name . '%');
+        })
+        ->when($request->has('email'), function ($whenQuery) use ($request){
+            $whenQuery->where('email', 'like', '%' . $request->email . '%');
+        })
+        ->orderByDesc('created_at')
+        ->get();
+
+        //Somar total de registros 
+        $totalRecords = $users->count('id');
+
+        //Verificar se a quantidade de registros ultrapassa o limite para gerar PDF
+        $numberRecordAllowed = 100;
+        if($totalRecords > $numberRecordAllowed)
+        {
+            //Redirecionar o usuário e gerar mensagem de erro
+            return redirect()->route(   'user.index',[
+                'name' => $request->name,
+                'email' => $request->email,
+            ])->with('error', "Limite de registros ultrapassados para gerar PDF. O limite é de $numberRecordAllowed registros!");
+
+        }
        
        //Carregar a string com o HTML/conteúdo e determinar a orientação e tamanho do arquivo pdf
        $pdf = PDF::loadView('users.generatePdf', ['users' => $users])->setPaper('a4', 'portrait');

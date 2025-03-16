@@ -33,6 +33,7 @@ class RoleSeeder extends Seeder
                 'create-course',
                 'edit-course',
                 'destroy-course',
+            
 
                 'index-classe',
                 'show-classe',
@@ -46,6 +47,7 @@ class RoleSeeder extends Seeder
                 'edit-user',
                 'edit-user-password',
                 'destroy-user',
+                'generate-pdf-user',
     
                 'index-role',
                 'create-role',

@@ -32,6 +32,7 @@ class PermissionSeeder extends Seeder
         ['title' => 'Editar usuário', 'name' => 'edit-user'],
         ['title' => 'Editar senha', 'name' => 'edit-user-password'],
         ['title' => 'Apagar usuário', 'name' => 'destroy-user'],
+        ['title' => 'Gerar PDF de usuários', 'name' => 'generate-pdf-user'],
 
         ['title' => 'Listar papéis', 'name' => 'index-role'],
         ['title' => 'Criar papel', 'name' => 'create-role'],
