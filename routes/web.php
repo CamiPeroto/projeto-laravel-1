@@ -69,6 +69,9 @@ Route::put('/update-user-password/{user}', [UserController::class, 'updatePasswo
 ->middleware('permission:edit-user-password');;
 Route::delete('/destroy-user/{user}', [UserController::class, 'destroy'])->name('user.destroy')
 ->middleware('permission:destroy-user');
+Route::get('/generate-pdf-user', [UserController::class, 'generatePdf'])->name('user.generate-pdf')
+->middleware('permission:index-user');
+
 //Cursos
 Route::get('/index-course', [CourseController::class, 'index'])->name('course.index')
 ->middleware('permission:index-course'); //listar os cursos
