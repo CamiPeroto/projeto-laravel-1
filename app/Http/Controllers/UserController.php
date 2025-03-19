@@ -28,7 +28,7 @@ class UserController extends Controller
     ->orderByDesc('created_at')
     ->paginate(10)
     ->withQueryString();
-
+    
     return view(   'users.index',[
         'menu' => 'users',
         'users' => $users,
