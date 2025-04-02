@@ -217,7 +217,7 @@ class UserController extends Controller
             Log::info('Usuário não excluído.', ['error' => $e->getMessage()]);
 
             // Redirecionar o usuário, enviar a mensagem de erro
-            return redirect()->route('course.index')->with('error', 'Usuário não excluído!');
+            return redirect()->route('user.index')->with('error', 'Usuário não excluído!');
         }
     }
     public function generatePdf(Request $request)
